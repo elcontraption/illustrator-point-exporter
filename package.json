@@ -23,9 +23,6 @@
     "babel-preset-es2015": "^6.3.13",
     "eslint": "^1.10.3",
     "eslint-loader": "^1.2.0",
-    "gson": "^0.1.5",
-    "json-pretty": "0.0.1",
-    "json3": "^3.3.2",
     "webpack": "^1.12.9"
   }
 }
