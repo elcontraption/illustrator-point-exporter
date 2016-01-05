@@ -143,3 +143,5 @@ $ npm run build
 ```
 
 Work on [`src/exporter.js`](src/exporter.js).
+
+Useful reference: [Adobe Illustrator CS6 Type Library](http://jongware.mit.edu/iljscs6html/iljscs6/)
