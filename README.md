@@ -1,7 +1,7 @@
 # Illlustrator: point coordinate exporter
 JSON exporter for Adobe Illustrator: get point coordinates from paths by layer.
 
-Work in progress. Right now this only works with polygons.
+As of now this only works with polygons, and there is no differentiation between shapes in a layer. An array of layer objects will be output, each including points within the layer.
 
 ## Usage
 1. Clone/download this repo locally.
