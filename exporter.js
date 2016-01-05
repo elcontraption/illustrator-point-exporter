@@ -7,11 +7,18 @@ var Exporter = function() {
     if (app.documents.length === 0) return;
 
     this.document = app.activeDocument;
+    this.artboard.width = this.document.artboards[0].artboardRect[2];
+    this.artboard.height = this.document.artboards[0].artboardRect[1];
+
     this.readLayers();
 };
 
 Exporter.prototype = {
     document: {},
+    artboard: {
+        width: 0,
+        height: 0
+    },
     layers: [],
     output: "[\n"
 };
@@ -71,7 +78,8 @@ Exporter.prototype.readLayerItems = function(layer) {
 
 Exporter.prototype.readItemPoints = function(item) {
     var pointCount = item.pathPoints.length;
-    var point;
+    var anchorX;
+    var anchorY;
     var i;
 
     // Skip if hidden
@@ -79,13 +87,24 @@ Exporter.prototype.readItemPoints = function(item) {
 
     // Loop through points
     for (i = 0; i < pointCount; i++) {
-        point = item.pathPoints[i];
+        anchorX = item.pathPoints[i].anchor[0];
+        anchorY = this.artboard.height - item.pathPoints[i].anchor[1];
 
-        this.output += "\t\t\t\t[" + point.anchor[0] + ', ' + point.anchor[1] + ']';
+        // Illustrator paths are specified relative to the lower-left corner of the artboard.
+        this.output += "\t\t\t\t[" + anchorX + ', ' + anchorY + ']';
 
         // Add comma unless last item
         this.output += i < pointCount - 1 ? ",\n" : "\n";
     }
+};
+
+/**
+ * Illustrator paths are specified relative to the lower-left corner of the artboard.
+ * We want coordinates based off the upper-right, so let's convert.
+ */
+Exporter.prototype.recalculatePoint = function(point) {
+    point.anchor[1] = this.artboard.height - point.anchor[1];
+    return point;
 };
 
 Exporter.prototype.writeOut = function() {
