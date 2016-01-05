@@ -9,7 +9,7 @@ As of now this only works with polygons.
 
 ## Usage
 1. Clone/download this repo locally.
-2. In Illustrator, File > Scripts > Other Script and locate exporter.js.
+2. In Illustrator, File > Scripts > Other Script and locate `dist/exporter.js`.
 3. Name and save your JSON export.
 
 ## Example output
@@ -137,3 +137,5 @@ Clone this repo, install dependencies, run `build` script:
 $ npm install
 $ npm run build
 ```
+
+Work on `src/exporter.js`.
