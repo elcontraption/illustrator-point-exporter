@@ -1,5 +1,3 @@
-
-
 #target illustrator
 
 /**
