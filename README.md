@@ -1,7 +1,11 @@
 # Illlustrator: point coordinate exporter
 JSON exporter for Adobe Illustrator: get point coordinates from paths by layer.
 
-As of now this only works with polygons, and there is no differentiation between shapes in a layer. An array of layer objects will be output, each including points within the layer.
+As of now this only works with polygons.
+
+- [Usage](#usage)
+- [Example output](#example-output)
+- [Contributing](#contributing)
 
 ## Usage
 1. Clone/download this repo locally.
@@ -9,28 +13,127 @@ As of now this only works with polygons, and there is no differentiation between
 3. Name and save your JSON export.
 
 ## Example output
+![Example image](example.png)
 
 ```json
-[
+{
+  "layers": [
     {
-        "name": "Layer 2",
-        "points": [
-            [158.640014648438, 208.299987792969],
-            [209, 158.080001831055],
-            [260.72998046875, 209.860000610352],
-            [312.509979248047, 158.080001831055],
-            [362.769989013672, 208.339996337891],
-            [260.640014648438, 310.429992675781]
-        ]
+      "name": "Polygon",
+      "paths": [
+        {
+          "points": [
+            [
+              147.188583099185,
+              255.177953406273
+            ],
+            [
+              94.377166198371,
+              163.705896114361
+            ],
+            [
+              147.188583099185,
+              72.2338388224471
+            ],
+            [
+              252.811416900817,
+              72.2338388224471
+            ],
+            [
+              305.62283380163,
+              163.705896114361
+            ],
+            [
+              252.811416900817,
+              255.177953406273
+            ]
+          ]
+        }
+      ]
     },
     {
-        "name": "Layer 1",
-        "points": [
-            [364.190002441406, 2.82999992370605],
-            [414.559997558594, 53.2000007629395],
-            [364.199981689453, 103.569999694824],
-            [313.829986572266, 53.2000007629395]
-        ]
+      "name": "Path",
+      "paths": [
+        {
+          "points": [
+            [
+              34.0506912442397,
+              258.585253456222
+            ],
+            [
+              122.069124423963,
+              342.917050691245
+            ],
+            [
+              170.456221198157,
+              289.921658986175
+            ],
+            [
+              122.529953917051,
+              238.308755760369
+            ],
+            [
+              155.709677419355,
+              202.364055299538
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rectangles",
+      "paths": [
+        {
+          "points": [
+            [
+              352.483870967742,
+              363.193548387097
+            ],
+            [
+              232.207373271889,
+              363.193548387097
+            ],
+            [
+              232.207373271889,
+              150.751152073732
+            ],
+            [
+              352.483870967742,
+              150.751152073732
+            ]
+          ]
+        },
+        {
+          "points": [
+            [
+              136.815668202765,
+              131.396313364055
+            ],
+            [
+              54.7880184331798,
+              131.396313364055
+            ],
+            [
+              54.7880184331798,
+              49.3686635944705
+            ],
+            [
+              136.815668202765,
+              49.3686635944705
+            ]
+          ]
+        }
+      ]
     }
-]
+  ]
+}
+```
+
+## Contributing
+
+Clone this repo, install dependencies, run `build` script:
+
+```sh
+$ npm install
+$ npm run build
 ```
