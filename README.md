@@ -9,12 +9,15 @@ As of now this only works with polygons.
 
 ## Usage
 1. Clone/download this repo locally.
-2. In Illustrator, File > Scripts > Other Script and locate `dist/exporter.js`.
+2. In Illustrator, File > Scripts > Other Script and locate [`dist/exporter.js`](dist/exporter.js).
 3. Name and save your JSON export.
 
 ## Example output
-![Example image](example.png)
 
+This Illustrator file:
+![Example image](example.ai)
+
+Will produce this JSON (pretty printed here for clarity):
 ```json
 {
   "layers": [
@@ -138,4 +141,4 @@ $ npm install
 $ npm run build
 ```
 
-Work on `src/exporter.js`.
+Work on [`src/exporter.js`](src/exporter.js).
