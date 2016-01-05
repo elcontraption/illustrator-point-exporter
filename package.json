@@ -6,7 +6,7 @@
   "version": "0.2.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elcontraption/illustrator-layers-to-json-exporter"
+    "url": "https://github.com/elcontraption/illustrator-point-coordinate-exporter"
   },
   "scripts": {
     "build": "webpack --progress --hide-modules"
