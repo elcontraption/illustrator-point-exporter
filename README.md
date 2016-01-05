@@ -15,6 +15,7 @@ As of now this only works with polygons.
 ## Example output
 
 This [Illustrator file](example.ai):
+
 ![Example image](example.png)
 
 Will produce this JSON (pretty printed here for clarity):
