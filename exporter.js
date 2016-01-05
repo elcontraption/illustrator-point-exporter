@@ -98,15 +98,6 @@ Exporter.prototype.readItemPoints = function(item) {
     }
 };
 
-/**
- * Illustrator paths are specified relative to the lower-left corner of the artboard.
- * We want coordinates based off the upper-right, so let's convert.
- */
-Exporter.prototype.recalculatePoint = function(point) {
-    point.anchor[1] = this.artboard.height - point.anchor[1];
-    return point;
-};
-
 Exporter.prototype.writeOut = function() {
     var file = File.saveDialog('Export', 'export:*.txt');
     file.open('w');
