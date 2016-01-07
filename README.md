@@ -149,5 +149,6 @@ $ npm run build
 Work on [`src/exporter.js`](src/exporter.js).
 
 Useful references: 
-- [Illustrator Scripting Guide](reference/Illustrator Scripting Guide.pdf)
-- [Illustrator Scripting Reference - Javascript](reference/Illustrator Scripting Reference - Javascript.pdf)
+- [Scripting for Illustrator Tutorial](https://github.com/jtnimoy/scripting-for-illustrator-tutorial)
+- [Illustrator Scripting Guide](http://www.adobe.com/devnet/illustrator/scripting.html)
+- [Illustrator Scripting References (PDFs)](reference/)
