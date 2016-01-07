@@ -74,6 +74,7 @@ Exporter.prototype.readLayerPaths = function (layer) {
         path = layer.pathItems[i];
 
         paths.push({
+            name: path.name || path.typename,
             points: this.readPathPoints(path)
         });
     }

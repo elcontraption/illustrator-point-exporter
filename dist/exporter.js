@@ -83,13 +83,6 @@
 
 	    // Height is based on artboard y value
 	    this.artboard.h = Math.abs(artboard.artboardRect[3] - this.artboard.y);
-
-	    this.log('artboard:');
-	    this.log(this.artboard.x);
-	    this.log(this.artboard.y);
-	    this.log(this.artboard.w);
-	    this.log(this.artboard.h);
-	    this.log(' ');
 	};
 
 	/**
@@ -129,6 +122,7 @@
 	        path = layer.pathItems[i];
 
 	        paths.push({
+	            name: path.name || path.typename,
 	            points: this.readPathPoints(path)
 	        });
 	    }
@@ -169,10 +163,6 @@
 
 	    anchorX = Math.abs(anchorX - this.artboard.x);
 	    anchorY = Math.abs(anchorY - this.artboard.y);
-
-	    this.log('---');
-	    this.log(anchorY);
-	    this.log('---');
 
 	    return [anchorX, anchorY];
 	};
