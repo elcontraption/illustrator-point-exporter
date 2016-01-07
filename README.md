@@ -1,7 +1,7 @@
 # Illlustrator: point coordinate exporter
 Export point coordinates as JSON from Adobe Illustrator.
 
-As of now this only works with polygons.
+As of now this only provides [x, y] coordinates for anchor points, so it's really only useful for polygons. A nice upgrade would be to include information on Bézier curves.
 
 - [Usage](#usage)
 - [Example output](#example-output)
