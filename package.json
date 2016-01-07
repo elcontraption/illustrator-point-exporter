@@ -1,6 +1,6 @@
 {
   "name": "illustrator-point-coordinate-exporter",
-  "description": "JSON exporter for Adobe Illustrator: get point coordinates from paths by layer.",
+  "description": "Export point coordinates as JSON from Adobe Illustrator.",
   "author": "Darin Reid <darin@elcontraption.com>",
   "license": "MIT",
   "version": "0.3.1",

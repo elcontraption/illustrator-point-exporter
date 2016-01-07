@@ -1,5 +1,5 @@
 # Illlustrator: point coordinate exporter
-JSON exporter for Adobe Illustrator: get point coordinates from paths by layer.
+Export point coordinates as JSON from Adobe Illustrator.
 
 As of now this only works with polygons.
 
@@ -26,6 +26,7 @@ Will produce this JSON (pretty-printed here for clarity):
       "name": "Polygon",
       "paths": [
         {
+          "name": "Yellow hexagon",
           "points": [
             [
               147.188583099185,
@@ -59,6 +60,7 @@ Will produce this JSON (pretty-printed here for clarity):
       "name": "Path",
       "paths": [
         {
+          "name": "Blue path",
           "points": [
             [
               34.0506912442397,
@@ -88,6 +90,7 @@ Will produce this JSON (pretty-printed here for clarity):
       "name": "Rectangles",
       "paths": [
         {
+          "name": "Green rectangle",
           "points": [
             [
               352.483870967742,
@@ -108,6 +111,7 @@ Will produce this JSON (pretty-printed here for clarity):
           ]
         },
         {
+          "name": "Black square",
           "points": [
             [
               136.815668202765,
@@ -144,4 +148,6 @@ $ npm run build
 
 Work on [`src/exporter.js`](src/exporter.js).
 
-Useful reference: [Adobe Illustrator CS6 Type Library](http://jongware.mit.edu/iljscs6html/iljscs6/)
+Useful references: 
+- [Illustrator Scripting Guide](reference/Illustrator Scripting Guide.pdf)
+- [Illustrator Scripting Reference - Javascript](reference/Illustrator Scripting Reference - Javascript.pdf)
