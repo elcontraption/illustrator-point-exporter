@@ -56,7 +56,7 @@
 	    this.document = app.activeDocument;
 	    this.getArtboardInfo();
 
-	    this.readLayers();
+	    this.output.layers = this.readLayers(this.document);
 	    this.writeFile();
 	};
 
@@ -86,24 +86,40 @@
 	};
 
 	/**
-	 * Read each layer within the document
+	 * Read each layer within an object
+	 *
+	 * @param {object} object
 	 */
-	Exporter.prototype.readLayers = function () {
-	    var layerCount = this.document.layers.length;
+	Exporter.prototype.readLayers = function (object) {
+	    var layerCount = object.layers.length;
+	    var layers = [];
+	    var layerObject;
 	    var layer;
 	    var i;
 
 	    for (i = 0; i < layerCount; i++) {
-	        layer = this.document.layers[i];
+	        layer = object.layers[i];
+	        layerObject = {};
 
-	        // Skip if locked, hidden, or no paths
-	        if (layer.hidden || layer.locked || layer.pathItems === 0) continue;
+	        // Skip if locked or hidden
+	        if (layer.hidden || layer.locked) continue;
 
-	        this.output.layers.push({
-	            name: layer.name,
-	            paths: this.readLayerPaths(layer)
-	        });
+	        layerObject.name = layer.name;
+
+	        // Check for sub-layers
+	        if (layer.layers.length) {
+	            layerObject.layers = this.readLayers(layer);
+	        }
+
+	        // Check for paths
+	        if (layer.pathItems.length > 0) {
+	            layerObject.paths = this.readLayerPaths(layer);
+	        }
+
+	        layers.push(layerObject);
 	    }
+
+	    return layers;
 	};
 
 	/**
