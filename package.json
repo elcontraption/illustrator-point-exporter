@@ -3,7 +3,7 @@
   "description": "Export point coordinates as JSON from Adobe Illustrator.",
   "author": "Darin Reid <darin@elcontraption.com>",
   "license": "MIT",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/elcontraption/illustrator-point-coordinate-exporter"
