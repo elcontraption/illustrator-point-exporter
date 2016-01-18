@@ -54,7 +54,7 @@ Exporter.prototype.readLayers = function (object) {
         layerObject = {};
 
         // Skip if locked or hidden
-        if (layer.hidden || layer.locked) continue;
+        if (layer.locked || !layer.visible) continue;
 
         layerObject.name = layer.name;
 
@@ -88,6 +88,9 @@ Exporter.prototype.readLayerPaths = function (layer) {
 
     for (i = 0; i < pathCount; i++) {
         path = layer.pathItems[i];
+
+        // Skip if locked or hidden
+        if (path.locked || path.hidden) continue;
 
         paths.push({
             name: path.name || path.typename,
