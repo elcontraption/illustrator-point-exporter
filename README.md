@@ -9,6 +9,8 @@ Export [x, y] anchor point coordinates as JSON from Adobe Illustrator.
 - [Example output](#example-output)
 - [Contributing](#contributing)
 
+Tested on versions 19.2.0, 21.1.0.
+
 ## Usage
 1. Clone/download this repo locally.
 2. In Illustrator, File > Scripts > Other Script and locate [`dist/exporter.js`](dist/exporter.js).
