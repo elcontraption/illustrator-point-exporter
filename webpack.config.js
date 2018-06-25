@@ -1,5 +1,7 @@
 module.exports = {
-    entry: './src/exporter.js',
+    entry: {
+        main: ['./polyfill.js', './src/exporter.js']
+    },
     output: {
         path: './dist',
         filename: 'exporter.js'

@@ -1,4 +1,5 @@
 var JSON = require('JSON2');
+var polygon = require('d3-polygon');
 
 /* globals $, app */
 
@@ -27,8 +28,8 @@ Exporter.prototype.getArtboardInfo = function () {
     var artboardIndex = this.document.artboards.getActiveArtboardIndex();
     var artboard = this.document.artboards[artboardIndex];
 
-    this.artboard.x = artboard.artboardRect[0];
-    this.artboard.y = artboard.artboardRect[1];
+    this.artboard.x += artboard.artboardRect[0];
+    this.artboard.y += artboard.artboardRect[1];
 
     // Width is based on artboard x value
     this.artboard.w = Math.abs(artboard.artboardRect[2] - this.artboard.x);
@@ -57,6 +58,7 @@ Exporter.prototype.readLayers = function (object) {
         if (layer.locked || !layer.visible) continue;
 
         layerObject.name = layer.name;
+        layerObject.zOrderPosition = layer.zOrderPosition;
 
         // Check for sub-layers
         if (layer.layers.length) {
@@ -92,9 +94,13 @@ Exporter.prototype.readLayerPaths = function (layer) {
         // Skip if locked or hidden
         if (path.locked || path.hidden) continue;
 
+        var points = this.readPathPoints(path);
+
         paths.push({
             name: path.name || path.typename,
-            points: this.readPathPoints(path)
+            area: path.area,
+            points: points,
+            centroid: polygon.polygonCentroid(points)
         });
     }
 
@@ -157,6 +163,10 @@ Exporter.prototype.writeFile = function () {
  * @param  {*} out
  */
 Exporter.prototype.log = function (out) {
+    if (typeof out === 'object') {
+        out = JSON.stringify(out, null, 4);
+    }
+
     $.writeln(out);
 };
 

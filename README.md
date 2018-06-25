@@ -3,13 +3,15 @@ Export [x, y] anchor point coordinates as JSON from Adobe Illustrator.
 
 - Points are organized by path and layer.
 - Nested layers are supported.
+- Layer z-order, and path areas and centroids are included.
 - Layer, path, or point names are preserved in the output.
+
 
 - [Usage](#usage)
 - [Example output](#example-output)
 - [Contributing](#contributing)
 
-Tested on versions 19.2.0, 21.1.0.
+Tested on versions 19.2.0, 21.1.0, 22.0.1.
 
 ## Usage
 1. Clone/download this repo locally.
@@ -27,12 +29,15 @@ Will produce this JSON (pretty-printed here for clarity):
   "layers": [
     {
       "name": "Level 1 layer",
+      "zOrderPosition": 1,
       "layers": [
         {
           "name": "Polygons",
+          "zOrderPosition": 2,
           "paths": [
             {
               "name": "Hexagon",
+              "area": 20977.0556936124,
               "points": [
                 [
                   203.620465653063,
@@ -58,10 +63,15 @@ Will produce this JSON (pretty-printed here for clarity):
                   293.476308540483,
                   284.760368663594
                 ]
+              ],
+              "centroid": [
+                248.548387096773,
+                206.942926044626
               ]
             },
             {
               "name": "Rectangle",
+              "area": 14950.4130476334,
               "points": [
                 [
                   330.57603686636,
@@ -79,10 +89,15 @@ Will produce this JSON (pretty-printed here for clarity):
                   330.57603686636,
                   254.806451612902
                 ]
+              ],
+              "centroid": [
+                229.193548387097,
+                291.672811059907
               ]
             },
             {
               "name": "Square",
+              "area": 9099.57739599474,
               "points": [
                 [
                   134.26267281106,
@@ -100,21 +115,29 @@ Will produce this JSON (pretty-printed here for clarity):
                   134.26267281106,
                   60.7972350230411
                 ]
+              ],
+              "centroid": [
+                86.5668202764978,
+                108.493087557603
               ]
             }
           ]
         },
         {
           "name": "Level 2 layer",
+          "zOrderPosition": 1,
           "layers": [
             {
               "name": "Level 3 layer",
+              "zOrderPosition": 2,
               "layers": [
                 {
                   "name": "Paths",
+                  "zOrderPosition": 1,
                   "paths": [
                     {
                       "name": "Squiggle",
+                      "area": -6237.87933487678,
                       "points": [
                         [
                           350.391705069123,
@@ -136,6 +159,10 @@ Will produce this JSON (pretty-printed here for clarity):
                           64.2165898617495,
                           310.566820276497
                         ]
+                      ],
+                      "centroid": [
+                        25.293199202684,
+                        246.13710365416
                       ]
                     }
                   ]
@@ -144,32 +171,48 @@ Will produce this JSON (pretty-printed here for clarity):
             },
             {
               "name": "Points",
+              "zOrderPosition": 1,
               "paths": [
                 {
                   "name": "Point 1",
+                  "area": 0,
                   "points": [
                     [
                       294.631336405528,
                       230.843317972349
                     ]
+                  ],
+                  "centroid": [
+                    null,
+                    null
                   ]
                 },
                 {
                   "name": "Point 2",
+                  "area": 0,
                   "points": [
                     [
                       269.7465437788,
                       60.7972350230411
                     ]
+                  ],
+                  "centroid": [
+                    null,
+                    null
                   ]
                 },
                 {
                   "name": "Point 3",
+                  "area": 0,
                   "points": [
                     [
                       200,
                       151.119815668202
                     ]
+                  ],
+                  "centroid": [
+                    null,
+                    null
                   ]
                 }
               ]
@@ -177,7 +220,8 @@ Will produce this JSON (pretty-printed here for clarity):
           ],
           "paths": [
             {
-              "name": "Star",
+              "name": "PathItem",
+              "area": 10630.6634270187,
               "points": [
                 [
                   118.474654377878,
@@ -219,6 +263,10 @@ Will produce this JSON (pretty-printed here for clarity):
                   130.368508043138,
                   326.692098073721
                 ]
+              ],
+              "centroid": [
+                97.7373271889382,
+                299.419354838708
               ]
             }
           ]
@@ -240,7 +288,7 @@ $ npm run build
 
 Work on [`src/exporter.js`](src/exporter.js).
 
-Useful references: 
+Useful references:
 - [Scripting for Illustrator Tutorial](https://github.com/jtnimoy/scripting-for-illustrator-tutorial)
 - [Illustrator Scripting Guide](http://www.adobe.com/devnet/illustrator/scripting.html)
 - [Illustrator Scripting References (PDFs)](reference/)
