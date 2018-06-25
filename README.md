@@ -3,7 +3,7 @@ Export [x, y] anchor point coordinates as JSON from Adobe Illustrator.
 
 - Points are organized by path and layer.
 - Nested layers are supported.
-- Layer z-order, and path areas and centroids are included.
+- Z-order, and path areas and centroids are included.
 - Layer, path, or point names are preserved in the output.
 
 
