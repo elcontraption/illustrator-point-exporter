@@ -1188,14 +1188,12 @@
 	        if (path.locked || path.hidden) continue;
 
 	        var points = this.readPathPoints(path);
-	        var centroid = polygon.polygonCentroid(points);
 
 	        paths.push({
 	            name: path.name || path.typename,
 	            area: path.area,
-	            zOrderPosition: path.zOrderPosition,
 	            points: points,
-	            centroid: centroid
+	            centroid: polygon.polygonCentroid(points)
 	        });
 	    }
 
