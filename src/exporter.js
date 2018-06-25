@@ -95,12 +95,13 @@ Exporter.prototype.readLayerPaths = function (layer) {
         if (path.locked || path.hidden) continue;
 
         var points = this.readPathPoints(path);
+        var centroid = polygon.polygonCentroid(points);
 
         paths.push({
             name: path.name || path.typename,
             area: path.area,
-            points: points,
-            centroid: polygon.polygonCentroid(points)
+            points,
+            centroid
         });
     }
 
