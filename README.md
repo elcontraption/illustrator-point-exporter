@@ -6,7 +6,7 @@ Export [x, y] anchor point coordinates as JSON from Adobe Illustrator.
 - [Example output](#example-output)
 - [Contributing](#contributing)
 
-Tested on versions 19.2.0, 21.1.0, 22.0.1.
+Tested on versions 19.2.0, 21.1.0, 22.0.1., 22.1.0.
 
 ## Features
 - Points are organized by path and layer.
