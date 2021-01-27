@@ -27,6 +27,7 @@
     "webpack": "^1.12.9"
   },
   "dependencies": {
-    "d3-polygon": "1.0.3"
+    "d3-polygon": "1.0.3",
+    "package.json": "^2.0.1"
   }
 }
