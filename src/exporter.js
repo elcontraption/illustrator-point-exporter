@@ -66,7 +66,7 @@ Exporter.prototype.readLayers = function (object) {
         }
 
         // Check for paths
-        if (layer.pathItems.length > 0) {
+        if (layer.pathItems.length > 0 || layer.compoundPathItems.length > 0) {
             layerObject.paths = this.readLayerPaths(layer).concat(this.readLayerCompoundPaths(layer));
         }
 
