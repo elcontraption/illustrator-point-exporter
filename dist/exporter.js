@@ -1160,7 +1160,7 @@
 
 	        // Check for paths
 	        if (layer.pathItems.length > 0) {
-	            layerObject.paths = this.readLayerPaths(layer);
+	            layerObject.paths = this.readLayerPaths(layer).concat(this.readLayerCompoundPaths(layer));
 	        }
 
 	        layers.push(layerObject);
@@ -1181,11 +1181,16 @@
 	    var path = {};
 	    var i;
 
+	    // alert('Processing layer.name ' + layer.name + ' with ' + pathCount + ' paths.');
+
 	    for (i = 0; i < pathCount; i++) {
 	        path = layer.pathItems[i];
 
 	        // Skip if locked or hidden
-	        if (path.locked || path.hidden) continue;
+	        if (path.locked || path.hidden) {
+	            alert('path.name ' + path.name + ' is locked or hidden and will not be processed.');
+	            continue;
+	        }
 
 	        var points = this.readPathPoints(path);
 
@@ -1194,6 +1199,43 @@
 	            area: path.area,
 	            points: points,
 	            centroid: polygon.polygonCentroid(points)
+	        });
+	    }
+
+	    return paths;
+	};
+
+	/**
+	 * Read each compound path within a layer
+	 *
+	 * @param  {object} layer
+	 * @return {array}
+	 */
+	Exporter.prototype.readLayerCompoundPaths = function (layer) {
+	    var pathCount = layer.compoundPathItems.length;
+	    var paths = [];
+	    var path = {};
+	    var i;
+
+	    // alert('Processing layer.name ' + layer.name + ' with ' + pathCount + ' compound paths.');
+
+	    for (i = 0; i < pathCount; i++) {
+	        path = layer.compoundPathItems[i];
+
+	        // Skip if locked or hidden
+	        if (path.locked || path.hidden) {
+	            alert('path.name ' + path.name + ' is locked or hidden and will not be processed.');
+	            continue;
+	        }
+
+	        var points = this.readCompoundPathPoints(path);
+
+	        paths.push({
+	            name: path.name || path.typename,
+	            area: path.area,
+	            points: points,
+	            centroid: [path.left + path.width / 2.0, path.top + path.height / 2.0]
+	            // polygon.polygonCentroid(points)
 	        });
 	    }
 
@@ -1215,6 +1257,26 @@
 
 	    for (i = 0; i < pointCount; i++) {
 	        points.push(this.getPointAnchorSet(path.pathPoints[i]));
+	    }
+
+	    return points;
+	};
+
+	/**
+	 * Read each point set within a compound path
+	 *
+	 * @param  {object} path
+	 * @return {array}
+	 */
+	Exporter.prototype.readCompoundPathPoints = function (path) {
+	    var pathCount = path.pathItems.length;
+	    var points = [];
+	    var i;
+
+	    if (path.hidden) return;
+
+	    for (i = 0; i < pathCount; i++) {
+	        points.push(this.readPathPoints(path.pathItems[i]));
 	    }
 
 	    return points;
