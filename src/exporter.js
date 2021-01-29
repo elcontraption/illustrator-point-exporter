@@ -183,7 +183,7 @@ Exporter.prototype.readCompoundPathPoints = function (path) {
     if (path.hidden) return;
 
     for (i = 0; i < pathCount; i++) {
-        points.push(this.readPathPoints(path.pathItems[i]));
+        points = points.concat(this.readPathPoints(path.pathItems[i]));
     }
 
     return points;
